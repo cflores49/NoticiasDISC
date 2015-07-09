@@ -1,0 +1,71 @@
+﻿@model IEnumerable<NoticiasDISC.Models.Noticia>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Lista de noticias</h2>
+
+<p>
+    <img src="http://i60.tinypic.com/1dyruf_th.jpg" alt="Imagen crear nueva" height="20" width="20">
+    @Html.ActionLink("Crear nueva", "Create")    
+</p>
+
+<style type="text/css">
+    #izquierda {
+        font-size: 12px;
+        margin-top: 1px;
+        text-align: right;
+    }
+
+    #descripcion {
+        font-size: 14px;
+        margin-top: 1px;
+        text-align: justify;
+
+        width: 900px;
+        text-overflow: ellipsis;
+        white-space:nowrap;
+        overflow:hidden;
+    }
+
+</style>
+
+<table class="table">   
+    
+@foreach (var item in Model) {
+    <tr>    
+        <td>
+
+
+            <div id="contenidogeneral">
+                <dl class="dl-horizontal">
+                    <dt>
+                        <img src="@Html.DisplayFor(modelItem => item.Imagen)" alt="Imagen de noticia" height="150" width="150">
+                        <br>
+                        <img src="http://i22.servimg.com/u/f22/11/92/85/94/editar10.gif" alt="Imagen crear nueva" height="20" width="20">
+                        @Html.ActionLink("Editar", "Edit", new { id = item.NoticiaId }) |
+                        <img src="http://siguebuscando.es/img/remove.png" alt="Imagen crear nueva" height="20" width="20">
+                        @Html.ActionLink("Eliminar", "Delete", new { id = item.NoticiaId })
+                    </dt>
+                    <dd>
+                        <div id="izquierda">
+                                <span class="izquierda">Fecha de publicación: @Html.DisplayFor(modelItem => item.Publicacion)</span>
+                        </div>
+                        <h3>@Html.DisplayFor(modelItem => item.Titulo)</h3>
+                        <div id="descripcion">
+                            <span class="descripcion">@Html.DisplayFor(modelItem => item.Contenido)</span>
+                            <br>
+                            @Html.ActionLink("Leer más", "Details", new { id = item.NoticiaId })
+                        </div>
+                        <div id="izquierda">
+                            <span class="izquierda">Autor: @Html.DisplayFor(modelItem => item.Autor.Nombre) <br> <@Html.DisplayFor(modelItem => item.Autor.Email)></span>
+                        </div>
+                    </dd>
+                </dl>
+            </div>
+        </td>
+    </tr>
+}
+
+</table>

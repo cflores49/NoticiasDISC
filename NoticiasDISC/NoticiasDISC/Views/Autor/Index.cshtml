@@ -1,0 +1,46 @@
+﻿@model IEnumerable<NoticiasDISC.Models.Autor>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Lista de autores</h2>
+
+<p>
+    <img src="http://i60.tinypic.com/1dyruf_th.jpg" alt="Imagen crear nueva" height="20" width="20">
+    @Html.ActionLink("Crear nuevo", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Nombre)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Email)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Password)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Nombre)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Email)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Password)
+        </td>
+        <td>
+            @Html.ActionLink("Editar", "Edit", new { id=item.AutorId }) |
+            @Html.ActionLink("Detalles", "Details", new { id=item.AutorId }) |
+            @Html.ActionLink("Eliminar", "Delete", new { id=item.AutorId })
+        </td>
+    </tr>
+}
+
+</table>

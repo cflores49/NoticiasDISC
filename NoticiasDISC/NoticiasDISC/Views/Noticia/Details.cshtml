@@ -1,0 +1,51 @@
+﻿@model NoticiasDISC.Models.Noticia
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<!DOCTYPE html>
+
+<style type="text/css">
+    #izquierda {
+        font-size: 12px;
+        margin-top: 1px;
+        text-align: right;
+    }
+    #descripcion {
+        font-size: 14px;
+        margin-top: 1px;
+        text-align: justify;
+    }
+
+</style>
+
+
+
+<div id="izquierda">
+    <br><br>
+    <span class="izquierda">Fecha de publicación: @Html.DisplayFor(model => model.Publicacion)</span>
+</div>
+
+<div id="contenidogeneral">
+    <dl class="dl-horizontal">
+        <dt>
+            <img src="@Html.DisplayFor(model => model.Imagen)" alt="Imagen de noticia" height="200" width="172">
+        </dt>
+        <dd>
+            <h3>@Html.DisplayFor(model => model.Titulo)</h3>
+            <div id="descripcion">
+                <span class="descripcion">@Html.DisplayFor(model => model.Contenido)</span>
+            </div>
+        </dd>
+    </dl>
+</div>
+
+<div id="izquierda">
+    <span class="izquierda">Autor: @Html.DisplayFor(model => model.Autor.Nombre) <br> <@Html.DisplayFor(model => model.Autor.Email)></span>
+</div>
+
+<p>
+    @Html.ActionLink("Editar", "Edit", new { id = Model.NoticiaId }) |
+    @Html.ActionLink("Volver a la lista", "Index")
+</p>
